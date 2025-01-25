@@ -10,3 +10,4 @@
 <h3>
    Last {{url()->previous()}}
 </h3>
+{{-- <h2>{{$name}}</h2> --}}

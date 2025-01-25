@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -12,9 +13,9 @@ class UserController extends Controller
         return view('home',["username"=>$name],["users"=>$users]);
         
     }
-    // function aboutUser($name){
-    //     return view(view: 'about',['user'=>$name]);
-    // }
+    function aboutUser($name){
+        return $name;
+    }
 
     function addUser(Request $request){
 
@@ -27,15 +28,9 @@ class UserController extends Controller
         ],[
             'city.uppercase'=>'City name must be in uppercase'
 
-        ]
-    
-    
+        ] 
     );
-
         return $request;
-
-
-
 
         // echo "User Name is  $request->name";
         // echo "<br>";
@@ -54,4 +49,23 @@ class UserController extends Controller
     //      echo "<br>";
     //      echo "User Age  $request->age";
     // }
+
+    //route grouping with prefix
+    function show(){
+        return "Student show successfully";
+    }
+    function add(){
+        return "Student added successfully";
+    }
+    function delete(){
+        return "Student deleted successfully";
+    }
+     
+    //database data fetch
+    function user (){
+        $users = DB::select('select * from users');
+        return view('user',['data'=>$users]);
+
+    }
+
 }
