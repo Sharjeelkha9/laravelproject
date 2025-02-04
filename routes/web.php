@@ -43,6 +43,8 @@ Route::controller(UserController::class)->group(function(){
 //     //all routes here for group
 // });
 
-Route::get('user',[UserController::class,'user']);
+Route::get('/user',[UserController::class,'queries']);
 // Route::view('/user','user');
+Route::get('/students',[UserController::class,'getStudent']);
+
 

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Http;
+use App\Models\Student;
 class UserController extends Controller
 {
     function getUser(){
@@ -67,5 +68,62 @@ class UserController extends Controller
         return view('user',['data'=>$users]);
 
     }
+    function getStudent(){
+        // $data = new \App\Models\Student;
+        // echo $data->test(); 
+        $students = \App\Models\Student::all();
+        return view('students',['students'=>$students]);
+    }
+    function userdata (){
+        $response = Http::get('https://jsonplaceholder.typicode.com/users/1');
+        return view('user',['userdata'=>json_decode($response)]);
+    }
+    function queries (){
+        $result = DB::table('users')->get();
+        // // $result = DB::table('users')->where('phone','03033851771')->get();
+        return view('user',['users'=>$result]);
+
+        // $result = DB::table('users')->insert([
+        //     'name'=> 'test',
+        //     'email'=> 'test@gmail.com',
+        //     'phone'=> '03123456789',
+            
+        // ]);
+        // if($result){
+        //     return "data submitted";
+        // }else{
+        //     return "data not submitted";
+        // }
+
+        // $result = DB::table('users')->where('name','touqeer')
+        // ->update(['phone'=> '11121212']);
+        // ([
+        //         'name'=> 'test',
+        //         'email'=> 'test@gmail.com',
+        //         'phone'=> '03123456789',
+                
+        //     ]);
+        //     if($result){
+        //         return "data updated";
+        //     }else{
+        //         return "data not updated";
+        //     }
+
+        // $result = DB::table('users')->where('name','test')
+        // ->delete();
+        // ([
+        //         'name'=> 'test',
+        //         'email'=> 'test@gmail.com',
+        //         'phone'=> '03123456789',
+                
+        //     ]);
+        //     if($result){
+        //         return "data deleted";
+        //     }else{
+        //         return "data not deleted";
+        //     }
+
+    }
+
 
 }

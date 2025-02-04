@@ -1,12 +1,12 @@
 <h1>Users List</h1>
-{{-- {{print_r($users)}} --}}
-    <table border="2">
+{{-- {{print_r($userdata)}} --}}
+ <table border="2">
         <tr>
           <th>Name</th>
           <th>Email</th>
           <th>Phone Number</th>
         </tr>
-        @foreach ($data as $values)
+        @foreach ($users as $values)
         <tr>
           <td>{{$values->name}}</td>
           <td>{{$values->email}}</td>
@@ -14,5 +14,19 @@
         </tr>
         @endforeach
       </table>
+      {{-- <h1>Users List</h1> --}}
+{{-- {{print_r($userdata)}} --}}
+    {{-- <table border="2">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+        </tr>
+        <tr>
+          <td>{{$userdata->name}}</td>
+          <td>{{$userdata->email}}</td>
+          <td>{{$userdata->phone}}</td>
+        </tr>
+      </table> --}}
 
     
